@@ -145,11 +145,11 @@ texture = ExtResource("1_pns7k")
 position = Vector2(8, 0)
 texture = ExtResource("4_xklcy")
 
-[node name="Sprite2D5" type="Sprite2D" parent="PlayerShip"]
+[node name="Lab" type="Sprite2D" parent="PlayerShip"]
 position = Vector2(0, -8)
 texture = ExtResource("4_xklcy")
 
-[node name="Sprite2D3" type="Sprite2D" parent="PlayerShip"]
+[node name="Charging Station" type="Sprite2D" parent="PlayerShip"]
 position = Vector2(0, 8)
 texture = ExtResource("5_vssoa")
 
