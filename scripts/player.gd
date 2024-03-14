@@ -27,6 +27,7 @@ func _physics_process(delta: float) -> void:
 	velocity += dir*0.2
 	
 	if dir == Vector2(0, 0):
+		# drag example for demo
 		velocity *= 0.98
 
 	
