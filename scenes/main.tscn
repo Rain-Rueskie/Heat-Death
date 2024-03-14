@@ -138,22 +138,22 @@ layer_1/tile_data = PackedInt32Array(-65535, 131072, 0, -65536, 131072, 0, -1310
 position = Vector2(53, 29)
 script = ExtResource("1_j001v")
 
-[node name="Cockpit" type="Sprite2D" parent="PlayerShip"]
+[node name="Cockpit 1" type="Sprite2D" parent="PlayerShip"]
 texture = ExtResource("1_pns7k")
 
-[node name="Sprite2D2" type="Sprite2D" parent="PlayerShip"]
+[node name="Lab 1" type="Sprite2D" parent="PlayerShip"]
 position = Vector2(8, 0)
 texture = ExtResource("4_xklcy")
 
-[node name="Lab" type="Sprite2D" parent="PlayerShip"]
+[node name="Lab 2" type="Sprite2D" parent="PlayerShip"]
 position = Vector2(0, -8)
 texture = ExtResource("4_xklcy")
 
-[node name="Charging Station" type="Sprite2D" parent="PlayerShip"]
+[node name="Charging Station 1" type="Sprite2D" parent="PlayerShip"]
 position = Vector2(0, 8)
 texture = ExtResource("5_vssoa")
 
-[node name="Sprite2D4" type="Sprite2D" parent="PlayerShip"]
+[node name="Charging Station 2" type="Sprite2D" parent="PlayerShip"]
 position = Vector2(-8, 0)
 texture = ExtResource("5_vssoa")
 
