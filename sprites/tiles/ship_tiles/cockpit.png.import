@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ciiwhwtah5nw3"
-path="res://.godot/imported/static_tiles_10.png-e4cee8d8a2e661788907b789b9312d30.ctex"
+uid="uid://ciuja5dut87ns"
+path="res://.godot/imported/cockpit.png-bd96491cc959d5c9defe2f2fce453147.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/tiles/ship_tiles/static_tiles_10.png"
-dest_files=["res://.godot/imported/static_tiles_10.png-e4cee8d8a2e661788907b789b9312d30.ctex"]
+source_file="res://sprites/tiles/ship_tiles/cockpit.png"
+dest_files=["res://.godot/imported/cockpit.png-bd96491cc959d5c9defe2f2fce453147.ctex"]
 
 [params]
 

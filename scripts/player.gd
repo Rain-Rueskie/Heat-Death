@@ -25,7 +25,12 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	velocity += dir*0.2
+	
+	if dir == Vector2(0, 0):
+		velocity *= 0.98
 
+	
+	
 	#velocity = velocity.clamp(Vector2(-cap_speed,-cap_speed),Vector2(cap_speed,cap_speed))
 		
 	last_velocity = velocity.length()/1.02

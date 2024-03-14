@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://y8m1jpna3v4a"
-path="res://.godot/imported/static_tiles_04.png-1a770f93e593d7a33c2329cad2dffb42.ctex"
+uid="uid://dabrwdubkf1nk"
+path="res://.godot/imported/thruster.png-c4ce22de4ae5285bbfa78f2ce6d0a5fb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/tiles/ship_tiles/static_tiles_04.png"
-dest_files=["res://.godot/imported/static_tiles_04.png-1a770f93e593d7a33c2329cad2dffb42.ctex"]
+source_file="res://sprites/tiles/ship_tiles/thruster.png"
+dest_files=["res://.godot/imported/thruster.png-c4ce22de4ae5285bbfa78f2ce6d0a5fb.ctex"]
 
 [params]
 

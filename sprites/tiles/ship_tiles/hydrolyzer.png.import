@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c34v1fi1noud4"
-path="res://.godot/imported/static_tiles_05.png-0683db3b38b28e10b7c1bb87bf970a68.ctex"
+uid="uid://o1ywwkhir468"
+path="res://.godot/imported/hydrolyzer.png-25cac5580af78d25f72d371402d0c231.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/tiles/ship_tiles/static_tiles_05.png"
-dest_files=["res://.godot/imported/static_tiles_05.png-0683db3b38b28e10b7c1bb87bf970a68.ctex"]
+source_file="res://sprites/tiles/ship_tiles/hydrolyzer.png"
+dest_files=["res://.godot/imported/hydrolyzer.png-25cac5580af78d25f72d371402d0c231.ctex"]
 
 [params]
 

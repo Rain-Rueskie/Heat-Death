@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://qprplqhjw027"
-path="res://.godot/imported/static_tiles_17.png-0a0a53f88d504f06fb204b491da96e27.ctex"
+uid="uid://cjhyrx3em7rps"
+path="res://.godot/imported/geothermal_powerplant.png-a8032e41fe493715c7a3b802d030f356.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/tiles/ship_tiles/static_tiles_17.png"
-dest_files=["res://.godot/imported/static_tiles_17.png-0a0a53f88d504f06fb204b491da96e27.ctex"]
+source_file="res://sprites/tiles/ship_tiles/geothermal_powerplant.png"
+dest_files=["res://.godot/imported/geothermal_powerplant.png-a8032e41fe493715c7a3b802d030f356.ctex"]
 
 [params]
 

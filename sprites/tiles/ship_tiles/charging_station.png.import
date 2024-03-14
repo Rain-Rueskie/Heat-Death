@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://o1ywwkhir468"
-path="res://.godot/imported/static_tiles_14.png-1497ce4ca9d5c6ccfef1edd4b2fe7d3e.ctex"
+uid="uid://dyko05opfo1u"
+path="res://.godot/imported/charging_station.png-ba4dce5adb570479395a05472e41dbca.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/tiles/ship_tiles/static_tiles_14.png"
-dest_files=["res://.godot/imported/static_tiles_14.png-1497ce4ca9d5c6ccfef1edd4b2fe7d3e.ctex"]
+source_file="res://sprites/tiles/ship_tiles/charging_station.png"
+dest_files=["res://.godot/imported/charging_station.png-ba4dce5adb570479395a05472e41dbca.ctex"]
 
 [params]
 
