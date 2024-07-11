@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://bxcs7wjks7xb3"]
 
-[ext_resource type="Script" path="res://scripts/player.gd" id="1_j001v"]
+[ext_resource type="Script" path="res://scripts/ship.gd" id="1_j001v"]
 [ext_resource type="Texture2D" uid="uid://dk4023nfpgvgw" path="res://sprites/tiles/tile_sheet_1.png" id="1_l23ry"]
 [ext_resource type="Texture2D" uid="uid://ciuja5dut87ns" path="res://sprites/tiles/ship_tiles/cockpit.png" id="1_pns7k"]
 [ext_resource type="Texture2D" uid="uid://iscvc3mjxq11" path="res://sprites/tiles/ship_tiles/lab.png" id="4_xklcy"]

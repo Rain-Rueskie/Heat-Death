@@ -1,42 +1,88 @@
 extends CharacterBody2D
 
-var dir = Vector2.ZERO
+@onready var _animated_sprite = $AnimatedSprite2D
 
-var zoom = 0
-var cap_speed = 20
-var last_velocity = 0
+# Define the size of each grid cell
+const GRID_SIZE = 8
 
-func _process(delta: float) -> void:
-	dir.y = Input.get_action_raw_strength("ui_down") - Input.get_action_raw_strength("ui_up")
-	dir.x = Input.get_action_raw_strength("ui_right") - Input.get_action_raw_strength("ui_left")
-	if Input.is_action_just_pressed("scroll_up"):
-		zoom = clamp(zoom+1,0,2)
-	elif Input.is_action_just_pressed("scroll_down"):
-		zoom = clamp(zoom-1,0,2)
-		
-	match zoom:
-		0:
-			$Camera2D.zoom = Vector2(0.5,0.5)
-		1:
-			$Camera2D.zoom = Vector2(1,1)
-		2:
-			$Camera2D.zoom = Vector2(2,2)
-	
+# Movement directions
+enum Direction {
+	UP,
+	DOWN,
+	LEFT,
+	RIGHT
+}
 
-func _physics_process(delta: float) -> void:
-	velocity += dir*0.2
-	
-	if dir == Vector2(0, 0):
-		# drag example for demo
-		velocity *= 0.98
+var facing: Direction
 
+# Current target position
+var target_position: Vector2
+
+# Flag to check if the character is moving
+var is_moving = false
+
+func _ready():
+	# Initialize the target position to the current position
+	target_position = position
+
+func _physics_process(delta):
+	# Handle input only if not moving
+	if not is_moving:
+		if Input.is_action_pressed("ui_up"):
+			move_to(Direction.UP)
+		elif Input.is_action_pressed("ui_down"):
+			move_to(Direction.DOWN)
+		elif Input.is_action_pressed("ui_left"):
+			move_to(Direction.LEFT)
+		elif Input.is_action_pressed("ui_right"):
+			move_to(Direction.RIGHT)
+		else:
+			play_anim_idle()
+
+	# Smoothly move towards the target position
+	if is_moving:
+		velocity = (target_position - position).normalized() * GRID_SIZE * 2
+		move_and_slide()
+		if position.distance_to(target_position) < 1:
+			position = target_position
+			is_moving = false
+
+func play_anim_idle():
+	match facing:
+		Direction.UP:
+			_animated_sprite.flip_h = false
+			_animated_sprite.play("idle_back")
+		Direction.DOWN:
+			_animated_sprite.flip_h = false
+			_animated_sprite.play("idle_front")
+		Direction.LEFT:
+			_animated_sprite.flip_h = true
+			_animated_sprite.play("idle_side")
+		Direction.RIGHT:
+			_animated_sprite.flip_h = false
+			_animated_sprite.play("idle_side")
+
+func move_to(direction: int):
+	match direction:
+		Direction.UP:
+			_animated_sprite.flip_h = false
+			_animated_sprite.play("move_back")
+			target_position = position + Vector2(0, -GRID_SIZE)
+		Direction.DOWN:
+			_animated_sprite.flip_h = false
+			_animated_sprite.play("move_front")
+			target_position = position + Vector2(0, GRID_SIZE)
+		Direction.LEFT:
+			_animated_sprite.flip_h = true
+			_animated_sprite.play("move_side")
+			target_position = position + Vector2(-GRID_SIZE, 0)
+		Direction.RIGHT:
+			_animated_sprite.flip_h = false
+			_animated_sprite.play("move_side")
+			target_position = position + Vector2(GRID_SIZE, 0)
 	
+	facing = direction
 	
-	#velocity = velocity.clamp(Vector2(-cap_speed,-cap_speed),Vector2(cap_speed,cap_speed))
-		
-	last_velocity = velocity.length()/1.02
-	
-	
-	var collision = move_and_collide(velocity * delta)
-	if collision:
-		velocity = velocity.bounce(collision.get_normal()) * ((last_velocity*delta))
+	# Check for collision and set is_moving to true if no collision
+	if not is_moving:
+		is_moving = true
