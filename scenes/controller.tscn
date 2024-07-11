@@ -446,8 +446,11 @@ script = ExtResource("1_68pvy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_nnhdm")
-animation = &"power_side"
+animation = &"move_side"
+frame_progress = 0.43247
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource("RectangleShape2D_754xo")
+
+[node name="Camera2D" type="Camera2D" parent="."]

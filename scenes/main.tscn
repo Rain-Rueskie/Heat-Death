@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bxcs7wjks7xb3"]
+[gd_scene load_steps=9 format=3 uid="uid://bxcs7wjks7xb3"]
 
 [ext_resource type="Script" path="res://scripts/ship.gd" id="1_j001v"]
 [ext_resource type="Texture2D" uid="uid://dk4023nfpgvgw" path="res://sprites/tiles/tile_sheet_1.png" id="1_l23ry"]
 [ext_resource type="Texture2D" uid="uid://ciuja5dut87ns" path="res://sprites/tiles/ship_tiles/cockpit.png" id="1_pns7k"]
 [ext_resource type="Texture2D" uid="uid://iscvc3mjxq11" path="res://sprites/tiles/ship_tiles/lab.png" id="4_xklcy"]
 [ext_resource type="Texture2D" uid="uid://dyko05opfo1u" path="res://sprites/tiles/ship_tiles/charging_station.png" id="5_vssoa"]
+[ext_resource type="PackedScene" uid="uid://biyjggya6f3g1" path="res://scenes/controller.tscn" id="6_l8jcu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dp5tu"]
 texture = ExtResource("1_l23ry")
@@ -158,6 +159,10 @@ position = Vector2(-8, 0)
 texture = ExtResource("5_vssoa")
 
 [node name="Camera2D" type="Camera2D" parent="PlayerShip"]
+enabled = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PlayerShip"]
 polygon = PackedVector2Array(-12, -4, -12, 4, -4, 4, -4, 12, 4, 12, 4, 4, 12, 4, 12, -4, 4, -4, 4, -12, -4, -12, -4, -4)
+
+[node name="Controller" parent="." instance=ExtResource("6_l8jcu")]
+position = Vector2(30, 32)
