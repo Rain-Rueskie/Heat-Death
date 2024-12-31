@@ -439,7 +439,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_754xo"]
-size = Vector2(8, 8)
+size = Vector2(6, 6)
 
 [node name="Controller" type="CharacterBody2D"]
 script = ExtResource("1_68pvy")
@@ -449,7 +449,6 @@ sprite_frames = SubResource("SpriteFrames_nnhdm")
 animation = &"idle_back"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("RectangleShape2D_754xo")
 
 [node name="Camera2D" type="Camera2D" parent="."]
