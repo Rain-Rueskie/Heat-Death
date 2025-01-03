@@ -260,22 +260,9 @@ shape = SubResource("RectangleShape2D_q8vlb")
 position = Vector2(-8, 0)
 shape = SubResource("RectangleShape2D_qomw2")
 
-[node name="AirlockEntranceTimer" type="Timer" parent="."]
-one_shot = true
-
-[node name="InterchangeTimer" type="Timer" parent="."]
-wait_time = 5.0
-one_shot = true
-
-[node name="AirlockExitTimer" type="Timer" parent="."]
-one_shot = true
-
 [connection signal="body_entered" from="Entrance" to="." method="_on_entrance_body_entered"]
 [connection signal="body_exited" from="Entrance" to="." method="_on_entrance_body_exited"]
 [connection signal="body_entered" from="Occupation" to="." method="_on_occupation_body_entered"]
 [connection signal="body_exited" from="Occupation" to="." method="_on_occupation_body_exited"]
 [connection signal="body_entered" from="Exit" to="." method="_on_exit_body_entered"]
 [connection signal="body_exited" from="Exit" to="." method="_on_exit_body_exited"]
-[connection signal="timeout" from="AirlockEntranceTimer" to="." method="_on_airlock_entrance_timer_timeout"]
-[connection signal="timeout" from="InterchangeTimer" to="." method="_on_interchange_timer_timeout"]
-[connection signal="timeout" from="AirlockExitTimer" to="." method="_on_airlock_exit_timer_timeout"]
