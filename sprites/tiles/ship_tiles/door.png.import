@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7jd30tnb2mos"
-path="res://.godot/imported/yellow_drone.png-1759666be573d9fc5d207c26906f58e7.ctex"
+uid="uid://qflig3ixychy"
+path="res://.godot/imported/door.png-0dc81abd158648abdb3723af5203d5ef.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/drones/yellow_drone.png"
-dest_files=["res://.godot/imported/yellow_drone.png-1759666be573d9fc5d207c26906f58e7.ctex"]
+source_file="res://sprites/tiles/ship_tiles/door.png"
+dest_files=["res://.godot/imported/door.png-0dc81abd158648abdb3723af5203d5ef.ctex"]
 
 [params]
 
