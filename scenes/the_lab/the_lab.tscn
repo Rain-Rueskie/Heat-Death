@@ -1,12 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://donjnk532jf5g"]
+[gd_scene load_steps=5 format=3 uid="uid://donjnk532jf5g"]
 
 [ext_resource type="PackedScene" uid="uid://biyjggya6f3g1" path="res://entities/player/player.tscn" id="1_2o5hd"]
 [ext_resource type="PackedScene" uid="uid://vh1uicetg5pb" path="res://entities/airlock/airlock.tscn" id="2_tw417"]
 [ext_resource type="PackedScene" uid="uid://486c35qoo70m" path="res://entities/door/door.tscn" id="3_xnykf"]
+[ext_resource type="Script" path="res://entities/player/camera.gd" id="4_wto1g"]
 
 [node name="TheLab" type="Node2D"]
 
-[node name="Controller" parent="." instance=ExtResource("1_2o5hd")]
+[node name="Controller" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1_2o5hd")]
+camera = NodePath("../Camera2D")
 
 [node name="Level" type="Node" parent="."]
 
@@ -19,3 +21,7 @@ position = Vector2(0, -15)
 
 [node name="Door" parent="." instance=ExtResource("3_xnykf")]
 position = Vector2(22, -13)
+
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
+script = ExtResource("4_wto1g")
+target = NodePath("../Controller")

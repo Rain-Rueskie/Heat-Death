@@ -446,11 +446,9 @@ script = ExtResource("1_68pvy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_nnhdm")
-animation = &"idle_back"
+animation = &"attack_front"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_754xo")
-
-[node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="RayCast2D" type="RayCast2D" parent="."]

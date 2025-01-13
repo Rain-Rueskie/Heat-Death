@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @onready var _animated_sprite = $AnimatedSprite2D
 @export var speed = 16
+@export var camera = Camera2D
 
 # Movement directions
 enum Direction {
@@ -52,22 +53,8 @@ func _physics_process(delta):
 	# TODO: Lock player to grid
 	move_and_slide()
 
-var zoom = 0
 
 func _process(delta):
-	if Input.is_action_just_pressed("scroll_up"):
-		zoom = clamp(zoom+1,0,2)
-	elif Input.is_action_just_pressed("scroll_down"):
-		zoom = clamp(zoom-1,0,2)
-		
-	match zoom:
-		0:
-			$Camera2D.zoom = Vector2(1,1)
-		1:
-			$Camera2D.zoom = Vector2(2,2)
-		2:
-			$Camera2D.zoom = Vector2(3,3)
-	
 	if moving:
 		play_anim("move")
 	elif interacting:
