@@ -43,6 +43,13 @@ var state = {
 	directions.WEST: 0
 }
 
+@onready var hitbox = {
+	directions.NORTH: $NorthDoor,
+	directions.EAST: $EastDoor,
+	directions.SOUTH: $SouthDoor,
+	directions.WEST: $WestDoor
+}
+
 func get_animation(direction: directions, action: actions) -> String:
 	print("Playing animation: ", str(directions.keys()[direction].to_lower(), "_", actions.keys()[action].to_lower()))
 	return str(directions.keys()[direction].to_lower(), "_", actions.keys()[action].to_lower())
@@ -51,6 +58,9 @@ func close_direction(direction: directions) -> void:
 	# TODO: Not implemented
 	state[direction] = 0
 	# TODO: Enable hitbox for direction.
+	# TODO: Check if requested door is already closed to prevent duplicate animations.
+	# Enable hitbox here
+	hitbox[direction].set_deferred("disabled", false)
 	_animated_sprite.play(get_animation(direction, actions.CLOSE))
 	await _animated_sprite.animation_finished
 	return
@@ -58,22 +68,19 @@ func close_direction(direction: directions) -> void:
 func open_direction(direction: directions) -> void:
 	# check if any door is open that's not the current door.
 	for door in state:
-		print("Door: ", str(door))
-		print(direction)
 		if door != direction and state[door]:
 			print("Door ", door, " is open! Closing")
 			await close_direction(door)
-		print(door, state[door])
 		if door == direction and state[door]:
 			# The requested open direction is already open.
-			print("FOO!")
 			return
 			
-	
 	# TODO: Now open the requested direction.
 	state[direction] = 1
 	_animated_sprite.play(get_animation(direction, actions.OPEN))
 	await _animated_sprite.animation_finished
+	hitbox[direction].set_deferred("disabled", true)
+	# Disable hitbox here.
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -82,8 +89,6 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-
-
 
 func _on_north_sensor_body_entered(body: Node2D) -> void:
 	if body.name != "Controller": return

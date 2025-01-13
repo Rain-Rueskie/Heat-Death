@@ -49,6 +49,7 @@ func _physics_process(delta):
 
 	velocity = direction * speed
 
+	# TODO: Lock player to grid
 	move_and_slide()
 
 var zoom = 0

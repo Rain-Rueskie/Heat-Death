@@ -452,3 +452,5 @@ animation = &"idle_back"
 shape = SubResource("RectangleShape2D_754xo")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
