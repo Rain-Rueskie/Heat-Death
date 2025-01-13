@@ -23,6 +23,5 @@ func _process(delta):
 
 func update_camera():
 	if is_instance_valid(target):
+		# prevents jitter when zoomed in.
 		position = Vector2(round(target.position.x), round(target.position.y))
-		#position = target.position;
-		#print(position)
