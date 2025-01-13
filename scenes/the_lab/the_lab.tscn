@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://donjnk532jf5g"]
 
-[ext_resource type="PackedScene" uid="uid://biyjggya6f3g1" path="res://scenes/controller.tscn" id="1_2o5hd"]
-[ext_resource type="PackedScene" uid="uid://vh1uicetg5pb" path="res://scenes/entities/airlock.tscn" id="2_tw417"]
-[ext_resource type="PackedScene" uid="uid://486c35qoo70m" path="res://scenes/entities/door.tscn" id="3_xnykf"]
+[ext_resource type="PackedScene" uid="uid://biyjggya6f3g1" path="res://entities/player/player.tscn" id="1_2o5hd"]
+[ext_resource type="PackedScene" uid="uid://vh1uicetg5pb" path="res://entities/airlock/airlock.tscn" id="2_tw417"]
+[ext_resource type="PackedScene" uid="uid://486c35qoo70m" path="res://entities/door/door.tscn" id="3_xnykf"]
 
 [node name="TheLab" type="Node2D"]
 

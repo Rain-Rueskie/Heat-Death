@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ccyvbfepywuar"
-path="res://.godot/imported/lock.png-f584bd149973546c610776e3d7e95ce1.ctex"
+uid="uid://dtfenw0lwyadq"
+path="res://.godot/imported/lock_sheet_placeholder_2.png-b9f787682d3e7b2e18c28d6554944844.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/tiles/ship_tiles/lock.png"
-dest_files=["res://.godot/imported/lock.png-f584bd149973546c610776e3d7e95ce1.ctex"]
+source_file="res://entities/airlock/lock_sheet_placeholder_2.png"
+dest_files=["res://.godot/imported/lock_sheet_placeholder_2.png-b9f787682d3e7b2e18c28d6554944844.ctex"]
 
 [params]
 
