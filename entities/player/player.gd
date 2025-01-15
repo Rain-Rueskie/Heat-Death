@@ -6,6 +6,7 @@ extends CharacterBody2D
 @export var mining_speed = 15
 @export var camera = Camera2D
 @onready var world: MineableLayer = $"../Level/FG"
+@onready var bg: TileMapLayer = $"../Level/BG"
 
 # Movement directions
 enum Direction {
@@ -99,10 +100,6 @@ func play_anim(action):
 
 
 func _on_tick_digging_timeout() -> void:
-	# TODO: The initial idea of having a massive array in a MineableLayer class
-	#	ISNT going to work. Creating an array the size of the whole map probably
-	#	will NOT scale.
-	
 	# https://docs.godotengine.org/en/stable/tutorials/physics/ray-casting.html
 	var space_state = get_world_2d().direct_space_state
 	var query = PhysicsRayQueryParameters2D.create(position, position + facing * 8, 1)
@@ -123,5 +120,7 @@ func _on_tick_digging_timeout() -> void:
 	
 	if toughness - 15 <= 0:
 		print("Broke cell")
+		var bg_replacement = world.get_cell_bg_tile(target_cell)
 		world.set_cell(target_cell)
+		bg.set_cell(target_cell, 0, bg_replacement)
 		print(world.get_cell_toughness(target_cell))

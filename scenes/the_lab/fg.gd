@@ -16,6 +16,9 @@ If Vector2i NOT in dictionary, assume full health
 Thanks to ElFrijole on the GoDot Discord for this idea.
 """
 
+# TODO: Perhaps look into moving this to the Node2D containing the layers so tiles can be
+#	automatically transferred to the background layer.
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -48,6 +51,13 @@ func set_cell_toughness(position: Vector2i, value: int) -> int:
 		cell_data[position]["toughness"] = value
 	
 	return cell_data[position]["toughness"]
+
+func get_cell_bg_tile(position: Vector2i) -> Vector2i:
+	var data = get_cell_tile_data(position)
+	if not data: return Vector2i(-1, -1)
+	var bg_tile = data.get_custom_data("bg")
+	if not bg_tile: return Vector2i(-1, -1)
+	return bg_tile
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
