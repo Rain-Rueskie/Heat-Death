@@ -5,6 +5,9 @@ var toughness = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	# TODO: This is really dumb now that I think about it. This would require iterating through the ENTIRE
+	#	map on startup. Remove this crap and maybe keep the data in the player script that just adds 
+	#	a list of accumulated damage for the player.
 	var dimensions = get_used_rect().size
 	print(dimensions)
 	for y in dimensions.y:
