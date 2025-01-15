@@ -1,33 +1,53 @@
 extends TileMapLayer
 class_name MineableLayer
 
-var toughness = []
+var cell_data = {}
+"""
+cell_data {
+	Vector2i: {
+		toughness: int,
+		max_toughness: int
+		...
+	}
+}
+
+If Vector2i NOT in dictionary, assume full health
+
+Thanks to ElFrijole on the GoDot Discord for this idea.
+"""
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	# TODO: This is really dumb now that I think about it. This would require iterating through the ENTIRE
-	#	map on startup. Remove this crap and maybe keep the data in the player script that just adds 
-	#	a list of accumulated damage for the player.
-	var dimensions = get_used_rect().size
-	print(dimensions)
-	for y in dimensions.y:
-		toughness.append([])
-		for x in dimensions.x:
-			var cell = Vector2i(x, y)
-			var data = get_cell_tile_data(cell)
-			
-			if not data: continue
-			
-			var cell_toughness = data.get_custom_data("toughness")
-			if not cell_toughness: continue
-			print("Assigned toughness value of ", str(cell_toughness), " to ", str(cell))
-			toughness[y].append(cell_toughness)
+	pass
 
-func set_grid_value(position: Vector2i, object: int):
-	toughness[position.y][position.x] = object
+func set_grid_data(position: Vector2i, attribute: String, value: int):
+	cell_data[position][attribute] = value
 	
-func get_grid_value(position: Vector2i) -> int:
-	return toughness[position.y][position.x]
+func get_grid_data(position: Vector2i) -> Dictionary:
+	return cell_data[position]
+
+func get_cell_toughness(position: Vector2i) -> int:
+	if not cell_data.has(position):
+		var data = get_cell_tile_data(position)
+		if not data: return -1001
+		var cell_toughness = data.get_custom_data("toughness")
+		if not cell_toughness: return -1002
+		return cell_toughness
+	else:
+		return cell_data[position]["toughness"]
+
+func set_cell_toughness(position: Vector2i, value: int) -> int:
+	if not cell_data.has(position):
+		# add position to cell data, set toughness value to new value and set max_toughness to grid value
+		cell_data[position] = {
+			toughness = value,
+			max_toughness = get_cell_toughness(position)
+		}
+	else:
+		cell_data[position]["toughness"] = value
+	
+	return cell_data[position]["toughness"]
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

@@ -35,18 +35,26 @@ func _physics_process(delta):
 			direction = Vector2.LEFT
 			facing = Vector2.LEFT
 			moving = true
+			interacting = false
+			_tick_digging.stop()
 		"ui_right":
 			direction = Vector2.RIGHT
 			facing = Vector2.RIGHT
 			moving = true
+			interacting = false
+			_tick_digging.stop()
 		"ui_up":
 			direction = Vector2.UP
 			facing = Vector2.UP
 			moving = true
+			interacting = false
+			_tick_digging.stop()
 		"ui_down":
 			direction = Vector2.DOWN
 			facing = Vector2.DOWN
 			moving = true
+			interacting = false
+			_tick_digging.stop()
 		"ui_select":
 			moving = false
 			interacting = true
@@ -91,6 +99,10 @@ func play_anim(action):
 
 
 func _on_tick_digging_timeout() -> void:
+	# TODO: The initial idea of having a massive array in a MineableLayer class
+	#	ISNT going to work. Creating an array the size of the whole map probably
+	#	will NOT scale.
+	
 	# https://docs.godotengine.org/en/stable/tutorials/physics/ray-casting.html
 	var space_state = get_world_2d().direct_space_state
 	var query = PhysicsRayQueryParameters2D.create(position, position + facing * 8, 1)
@@ -100,20 +112,16 @@ func _on_tick_digging_timeout() -> void:
 	var result = space_state.intersect_ray(query)
 	if result == {}:
 		return
-	print(result)
+	#print(result)
 	
 	var target_cell = world.local_to_map(result["position"] + (facing * 0.1)) # penetrate ray slightly to ensure correct tile is detected.
 	print(target_cell)
-	var toughness = world.get_grid_value(target_cell)
-	if not toughness:
-		print("cell data not found")
-		return
-	# Right now the class has hard coded to just return toughness, so we don't need to check what data the cell has.
-	# In the future if we want more data, we will want to check what values that data has and if it has a toughness value.
+	var toughness = world.get_cell_toughness(target_cell)
 	
 	print(str(toughness), "->", str(toughness - 15))
-	world.set_grid_value(target_cell, toughness - 15)
+	world.set_cell_toughness(target_cell, toughness - 15)
 	
 	if toughness - 15 <= 0:
 		print("Broke cell")
 		world.set_cell(target_cell)
+		print(world.get_cell_toughness(target_cell))
