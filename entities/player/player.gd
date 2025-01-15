@@ -16,7 +16,7 @@ enum Direction {
 	RIGHT
 }
 
-var facing: Vector2
+var facing: Vector2 = Vector2.RIGHT
 var moving: bool
 var interacting: bool
 var queue = [null] # https://www.reddit.com/r/godot/comments/1anpsdz/a_proper_4way_movement_system_for_keyboard_input/
@@ -72,8 +72,17 @@ func _physics_process(delta):
 	# TODO: Lock player to grid?
 	move_and_slide()
 	
-	
-
+	"""
+	match facing:
+		Vector2.RIGHT:
+			$PointLight2D.rotation = deg_to_rad(0)
+		Vector2.DOWN:
+			$PointLight2D.rotation = deg_to_rad(90)
+		Vector2.LEFT:
+			$PointLight2D.rotation = deg_to_rad(180)
+		Vector2.UP:
+			$PointLight2D.rotation = deg_to_rad(270)
+	"""
 
 func _process(delta):
 	if moving:
