@@ -451,4 +451,7 @@ animation = &"attack_front"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_754xo")
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
+[node name="TickDigging" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="timeout" from="TickDigging" to="." method="_on_tick_digging_timeout"]

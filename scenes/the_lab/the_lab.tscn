@@ -1,26 +1,37 @@
-[gd_scene load_steps=5 format=3 uid="uid://donjnk532jf5g"]
+[gd_scene load_steps=8 format=4 uid="uid://donjnk532jf5g"]
 
 [ext_resource type="PackedScene" uid="uid://biyjggya6f3g1" path="res://entities/player/player.tscn" id="1_2o5hd"]
+[ext_resource type="Script" path="res://scenes/the_lab/level.gd" id="1_764d7"]
 [ext_resource type="PackedScene" uid="uid://vh1uicetg5pb" path="res://entities/airlock/airlock.tscn" id="2_tw417"]
+[ext_resource type="Script" path="res://scenes/the_lab/fg.gd" id="3_8l0kv"]
 [ext_resource type="PackedScene" uid="uid://486c35qoo70m" path="res://entities/door/door.tscn" id="3_xnykf"]
+[ext_resource type="TileSet" uid="uid://cdyp6wbx8f4eq" path="res://scenes/common/world_tiles/world_tiles.tres" id="4_fnqve"]
 [ext_resource type="Script" path="res://entities/player/camera.gd" id="4_wto1g"]
 
 [node name="TheLab" type="Node2D"]
 
+[node name="Level" type="Node" parent="."]
+script = ExtResource("1_764d7")
+
+[node name="FG" type="TileMapLayer" parent="Level"]
+tile_map_data = PackedByteArray("AAABAAIAAAACAAAAAAACAAIAAAACAAAAAAADAAIAAAACAAAAAAAEAAIAAAACAAAAAAAFAAIAAAACAAAAAAAFAAEAAAACAAAAAAAFAAAAAAACAAAAAAAFAP//AAACAAAAAAAFAP7/AAACAAAAAAAFAP3/AAACAAAAAAAFAPz/AAACAAAAAAAFAPv/AAACAAAAAAAEAPv/AAACAAAAAAADAPv/AAACAAAAAAACAPv/AAACAAAAAAABAPv/AAACAAAAAAAAAPv/AAACAAAAAAD///v/AAACAAAAAAD+//v/AAACAAAAAAD9//v/AAACAAAAAAD8//v/AAACAAAAAAD8//z/AAACAAAAAAD8//3/AAACAAAAAAD8//7/AAACAAAAAAD8////AAACAAAAAAD8/wAAAAACAAAAAAD8/wEAAAACAAAAAAD8/wIAAAACAAAAAAD9/wIAAAACAAAAAAD+/wIAAAACAAAAAAD//wIAAAACAAAAAAAAAAIAAAACAAAAAAA=")
+tile_set = ExtResource("4_fnqve")
+script = ExtResource("3_8l0kv")
+
+[node name="BG" type="TileMapLayer" parent="Level"]
+z_index = -1
+tile_map_data = PackedByteArray("AAAAAP//AAACAAEAAAD/////AAACAAEAAAABAP//AAACAAEAAAABAP7/AAACAAEAAAAAAP7/AAACAAEAAAABAAAAAAACAAEAAAACAAAAAAACAAEAAAACAP//AAACAAEAAAADAP//AAACAAEAAAADAAAAAAACAAEAAAAAAAAAAAACAAEAAAD//wAAAAACAAEAAAD+/wAAAAACAAEAAAD+////AAACAAEAAAD+//7/AAACAAEAAAD+//3/AAACAAEAAAD///3/AAACAAEAAAAAAP3/AAACAAEAAAABAP3/AAACAAEAAAACAP3/AAACAAEAAAADAP3/AAACAAEAAAADAP7/AAACAAEAAAAEAAAAAAACAAEAAAAEAAEAAAACAAEAAAADAAEAAAACAAEAAAACAAEAAAACAAEAAAABAAEAAAACAAEAAAAAAAEAAAACAAEAAAD//wEAAAACAAEAAAD+/wEAAAACAAEAAAD9/wEAAAACAAEAAAD9/wAAAAACAAEAAAD9////AAACAAEAAAD9//7/AAACAAEAAAD9//3/AAACAAEAAAD9//z/AAACAAEAAAD+//z/AAACAAEAAAD///z/AAACAAEAAAAAAPz/AAACAAEAAAABAPz/AAACAAEAAAACAPz/AAACAAEAAAADAPz/AAACAAEAAAAEAPz/AAACAAEAAAAEAP3/AAACAAEAAAAEAP7/AAACAAEAAAAEAP//AAACAAEAAAD///7/AAACAAEAAAACAP7/AAACAAEAAAA=")
+tile_set = ExtResource("4_fnqve")
+collision_enabled = false
+
 [node name="Controller" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1_2o5hd")]
 camera = NodePath("../Camera2D")
 
-[node name="Level" type="Node" parent="."]
-
-[node name="FG" type="TileMapLayer" parent="Level"]
-
-[node name="BG" type="TileMapLayer" parent="Level"]
-
 [node name="Airlock" parent="." instance=ExtResource("2_tw417")]
-position = Vector2(0, -15)
+position = Vector2(-4, -12)
 
 [node name="Door" parent="." instance=ExtResource("3_xnykf")]
-position = Vector2(22, -13)
+position = Vector2(20, -12)
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
 script = ExtResource("4_wto1g")
