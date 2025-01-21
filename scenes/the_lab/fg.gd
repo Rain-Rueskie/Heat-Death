@@ -24,12 +24,19 @@ Thanks to ElFrijole on the GoDot Discord for this idea.
 func _ready():
 	pass
 
+## Inserts or replaces an attribute at the given position.
 func set_grid_data(position: Vector2i, attribute: String, value: int):
 	cell_data[position][attribute] = value
-	
+
+## Returns the dictionary entry for the given position.
 func get_grid_data(position: Vector2i) -> Dictionary:
 	return cell_data[position]
 
+## Checks the cell_data dictionary to see if it has toughness. If it's not in
+## the cell_data dictionary, check the sprite sheet custom data for its original
+## toughness. 
+## Returns -1001 if position has no data.
+## Returns -1002 if position has data but no toughness.
 func get_cell_toughness(position: Vector2i) -> int:
 	if not cell_data.has(position):
 		var data = get_cell_tile_data(position)
@@ -40,6 +47,10 @@ func get_cell_toughness(position: Vector2i) -> int:
 	else:
 		return cell_data[position]["toughness"]
 
+## Changes the toughness of the cell and stores it in the cell_data dictionary.
+## If it hasn't been changed before, it looks up its initial toughness from
+## custom data in the sprite sheet and stores that as well under max_toughness.
+## Returns the new toughness value.
 func set_cell_toughness(position: Vector2i, value: int) -> int:
 	if not cell_data.has(position):
 		# add position to cell data, set toughness value to new value and set max_toughness to grid value
@@ -52,6 +63,10 @@ func set_cell_toughness(position: Vector2i, value: int) -> int:
 	
 	return cell_data[position]["toughness"]
 
+## Lookup pointer to corresponding background tile. This is stored as custom
+## data in the sprite sheet which points to the coordinate of the tile's respective
+## background tile once it has been removed. Returns Vector2i(-1, -1) if there is
+## no background tile.
 func get_cell_bg_tile(position: Vector2i) -> Vector2i:
 	var data = get_cell_tile_data(position)
 	if not data: return Vector2i(-1, -1)

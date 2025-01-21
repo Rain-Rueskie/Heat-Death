@@ -22,9 +22,12 @@ var interacting: bool
 var queue = [null] # https://www.reddit.com/r/godot/comments/1anpsdz/a_proper_4way_movement_system_for_keyboard_input/
 
 func _ready():
-	var mask: int = world.tile_set.get_physics_layer_collision_layer(0)
-	print(mask)
+	#var mask: int = world.tile_set.get_physics_layer_collision_layer(0)
+	#print(mask)
+	pass
 
+## Query current inputs and push to the input queue. Match the last input to
+## its corresponding button and modify parameters corresponding to that input.
 func _physics_process(delta):
 	for input in ["ui_left", "ui_right", "ui_up", "ui_down", "ui_select"]:
 		if Input.is_action_just_pressed(input): queue.push_back(input)
@@ -71,19 +74,8 @@ func _physics_process(delta):
 
 	# TODO: Lock player to grid?
 	move_and_slide()
-	
-	"""
-	match facing:
-		Vector2.RIGHT:
-			$PointLight2D.rotation = deg_to_rad(0)
-		Vector2.DOWN:
-			$PointLight2D.rotation = deg_to_rad(90)
-		Vector2.LEFT:
-			$PointLight2D.rotation = deg_to_rad(180)
-		Vector2.UP:
-			$PointLight2D.rotation = deg_to_rad(270)
-	"""
 
+## Query current action and request the appropriate animation type from play_anim.
 func _process(delta):
 	if moving:
 		play_anim("move")
@@ -92,6 +84,8 @@ func _process(delta):
 	else:
 		play_anim("idle")
 
+## Match the current action keyword with the animation set. The action must
+## match the name of the animation in the sprite for the player.
 func play_anim(action):
 	match facing:
 		Vector2.UP:
@@ -107,7 +101,11 @@ func play_anim(action):
 			_animated_sprite.flip_h = false
 			_animated_sprite.play(action+"_side")
 
-
+## Every time the digging timer reaches 0.5 seconds, shoot a ray and check what
+## tile it hits. Convert the world coordinate to map tile coordinates and reduce
+## its toughness by the strength of the player (15). Query if that tile has been
+## broken, and if so, add its background tile to the background layer, and remove
+## the tile.
 func _on_tick_digging_timeout() -> void:
 	# https://docs.godotengine.org/en/stable/tutorials/physics/ray-casting.html
 	var space_state = get_world_2d().direct_space_state
