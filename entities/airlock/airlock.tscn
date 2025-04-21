@@ -1,6 +1,6 @@
 [gd_scene load_steps=34 format=3 uid="uid://vh1uicetg5pb"]
 
-[ext_resource type="Script" path="res://entities/airlock/airlock.gd" id="1_gmwfe"]
+[ext_resource type="Script" uid="uid://c8mutll6urh5j" path="res://entities/airlock/airlock.gd" id="1_gmwfe"]
 [ext_resource type="Texture2D" uid="uid://dtfenw0lwyadq" path="res://entities/airlock/lock_sheet_placeholder_2.png" id="2_q2n6g"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a2i1w"]

@@ -2,10 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://biyjggya6f3g1" path="res://entities/player/player.tscn" id="1_2o5hd"]
 [ext_resource type="PackedScene" uid="uid://vh1uicetg5pb" path="res://entities/airlock/airlock.tscn" id="2_tw417"]
-[ext_resource type="Script" path="res://scenes/the_lab/fg.gd" id="3_8l0kv"]
+[ext_resource type="Script" uid="uid://bcxqmwld7nh1l" path="res://scenes/the_lab/fg.gd" id="3_8l0kv"]
 [ext_resource type="PackedScene" uid="uid://486c35qoo70m" path="res://entities/door/door.tscn" id="3_xnykf"]
 [ext_resource type="TileSet" uid="uid://cdyp6wbx8f4eq" path="res://scenes/common/world_tiles/world_tiles.tres" id="4_fnqve"]
-[ext_resource type="Script" path="res://entities/player/camera.gd" id="4_wto1g"]
+[ext_resource type="Script" uid="uid://cfnoyw21xtoc8" path="res://entities/player/camera.gd" id="4_wto1g"]
 
 [sub_resource type="GDScript" id="GDScript_3kciu"]
 script/source = "extends Node
