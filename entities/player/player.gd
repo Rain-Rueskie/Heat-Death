@@ -3,7 +3,7 @@ extends CharacterBody2D
 @onready var _animated_sprite = $AnimatedSprite2D
 @onready var _tick_digging = $TickDigging
 @export var speed = 16
-@export var mining_speed = 15
+@export var mining_speed = 30
 @export var camera = Camera2D
 @onready var world: MineableLayer = $"../Level/FG"
 @onready var bg: TileMapLayer = $"../Level/BG"
@@ -103,7 +103,7 @@ func play_anim(action):
 
 ## Every time the digging timer reaches 0.5 seconds, shoot a ray and check what
 ## tile it hits. Convert the world coordinate to map tile coordinates and reduce
-## its toughness by the strength of the player (15). Query if that tile has been
+## its toughness by the strength of the player (set by mining_speed). Query if that tile has been
 ## broken, and if so, add its background tile to the background layer, and remove
 ## the tile.
 func _on_tick_digging_timeout() -> void:
@@ -122,10 +122,10 @@ func _on_tick_digging_timeout() -> void:
 	print(target_cell)
 	var toughness = world.get_cell_toughness(target_cell)
 	
-	print(str(toughness), "->", str(toughness - 15))
-	world.set_cell_toughness(target_cell, toughness - 15)
+	print(str(toughness), "->", str(toughness - mining_speed))
+	world.set_cell_toughness(target_cell, toughness - mining_speed)
 	
-	if toughness - 15 <= 0:
+	if toughness - mining_speed <= 0:
 		print("Broke cell")
 		var bg_replacement = world.get_cell_bg_tile(target_cell)
 		world.set_cell(target_cell)
